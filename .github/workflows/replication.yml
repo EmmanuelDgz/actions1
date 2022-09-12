@@ -26,4 +26,6 @@ jobs:
       - run: cp actions1/* all_modules/module1/
       - run: tree all_modules
       - run: cd all_modules
+      - run: echo $PWD
+      - run: ls -la .
       - run: git status
