@@ -1,0 +1,7 @@
+name: Replication 1
+on: push
+jobs:
+  replicate-to-gitlab:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "{{ github }}"
