@@ -15,11 +15,12 @@ jobs:
       #     repository: https://gitlab.com/EmmanuelDgz/repository-container.git
       #     path: all_modules
       # Checkout repos
-      - name: Checkout repos
+      - name: Checkout actions1 repo
         uses: actions/checkout@v3
         with:
             path: actions1
-        # Clone remote gitlab repository container
+      # Clone remote gitlab repository container
+      - name: Checkout repository-container repo
         run: |
           git clone https://gitlab.com/EmmanuelDgz/repository-container.git all_modules
           echo $PWD
