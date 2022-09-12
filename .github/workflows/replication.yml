@@ -18,6 +18,8 @@ jobs:
           path: actions1
       # Clone remote gitlab repository container
       - run: git clone https://gitlab.com/EmmanuelDgz/repository-container.git all_modules
+      - run: echo $PWD
+      - run: ls -la .
       # Delete unnecessary files from current repo
       - run: rm -rf actions1/.git/ actions1/.github/ actions1/.gitignore actions1/README.md
       # Put all files from current repo into repository container
