@@ -11,5 +11,9 @@ jobs:
       #   with:
       #     repository: https://gitlab.com/EmmanuelDgz/repository-container.git
       #     path: all_modules
+      - uses: actions/checkout@v3
+        with:
+          path: actions1
+      - run: ls -la actions1
       - run: git clone https://gitlab.com/EmmanuelDgz/repository-container.git all_modules
-      - run: tree all_modules
+      - run: ls -la all_modules
