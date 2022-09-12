@@ -5,29 +5,33 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # Show push info
-      - run: echo "Author name is ${{ github.event.head_commit.author.name }}"
-      - run: echo "Author email is ${{ github.event.head_commit.author.email }}"
+      - name: Show info
+        run: |
+          echo "Author name is ${{ github.event.head_commit.author.name }}"
+          echo "Author email is ${{ github.event.head_commit.author.email }}"
       # - run: echo "Commit message is ${{ github.event.head_commit.message }}"
       # - uses: actions/checkout@v3
       #   with:
       #     repository: https://gitlab.com/EmmanuelDgz/repository-container.git
       #     path: all_modules
-      # Clone current repo
-      - uses: actions/checkout@v3
-        with:
-          path: actions1
-      # Clone remote gitlab repository container
-      - run: git clone https://gitlab.com/EmmanuelDgz/repository-container.git all_modules
-      - run: echo $PWD
-      - run: ls -la .
-      # Delete unnecessary files from current repo
-      - run: rm -rf actions1/.git/ actions1/.github/ actions1/.gitignore actions1/README.md
-      # Put all files from current repo into repository container
-      - run: mkdir -p all_modules/module1
-      # actions1 repo is expected to hold files only, they all define a module
-      - run: cp actions1/* all_modules/module1/
-      - run: tree all_modules
-      - run: cd all_modules
-      - run: echo $PWD
-      - run: ls -la .
-      - run: git status
+      # Checkout repos
+      - name: Checkout repos
+        uses: actions/checkout@v3
+          with:
+            path: actions1
+        # Clone remote gitlab repository container
+        run: |
+          git clone https://gitlab.com/EmmanuelDgz/repository-container.git all_modules
+          echo $PWD
+          ls -la .
+      ## Delete unnecessary files from current repo
+      #- run: rm -rf actions1/.git/ actions1/.github/ actions1/.gitignore actions1/README.md
+      ## Put all files from current repo into repository container
+      #- run: mkdir -p all_modules/module1
+      ## actions1 repo is expected to hold files only, they all define a module
+      #- run: cp actions1/* all_modules/module1/
+      #- run: tree all_modules
+      #- run: cd all_modules
+      #- run: echo $PWD
+      #- run: ls -la .
+      #- run: git status
