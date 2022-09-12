@@ -16,7 +16,11 @@ jobs:
       - name: Remove actions1 repo unnecessary files
         run: rm -rf actions1/.git/ actions1/.github/ actions1/.gitignore actions1/README.md
       - name: Checkout repository-container repo
-        run: git clone https://gitlab.com/EmmanuelDgz/repository-container.git all_modules
+        uses: actions/checkout@v3
+        with:
+          repository: EmmanuelDgz/repository-container
+          ref: develop
+          path: all_modules
       - name: Copy changes into local repository-container
         run: |
           # actions1 repo is expected to hold files only, they all define a module
@@ -26,8 +30,8 @@ jobs:
         run: |
           cd all_modules
           git status
-          git config --global user.name "${{ github.event.head_commit.author.name }}"
-          git config --global user.email "${{ github.event.head_commit.author.email }}"
+          git config --global user.name "actions1"
+          git config --global user.email "actions1@github.com"
           git add .
           git commit -m "${{ github.event.head_commit.message }}"
           git push
