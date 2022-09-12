@@ -17,7 +17,7 @@ jobs:
       # Checkout repos
       - name: Checkout repos
         uses: actions/checkout@v3
-          with:
+        with:
             path: actions1
         # Clone remote gitlab repository container
         run: |
