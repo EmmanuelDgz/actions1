@@ -26,12 +26,14 @@ jobs:
           # actions1 repo is expected to hold files only, they all define a module
           mkdir -p all_modules/module1
           cp actions1/* all_modules/module1/
-      - name: Push changes into remote repository-container
-        run: |
-          cd all_modules
-          git status
-          git config --global user.name "actions1"
-          git config --global user.email "actions1@github.com"
-          git add .
-          git commit -m "${{ github.event.head_commit.message }}"
-          git push
+      #- name: Push changes into remote repository-container
+      #  run: |
+      #    cd all_modules
+      #    git status
+      #    git config --global user.name "actions1"
+      #    git config --global user.email "actions1@github.com"
+      #    git add .
+      #    git commit -m "${{ github.event.head_commit.message }}"
+      #    git push
+      - name: Show Python version
+        run: python --version
