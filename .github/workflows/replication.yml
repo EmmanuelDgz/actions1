@@ -4,4 +4,6 @@ jobs:
   replicate-to-gitlab:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "${{ github.event }}"
+      - run: echo "Author name is ${{ github.head_commit.author.name }}"
+      - run: echo "Author email is ${{ github.head_commit.author.email }}"
+      - run: echo "Commit message is ${{ github.head_commit.message }}"
