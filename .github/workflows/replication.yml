@@ -4,6 +4,11 @@ jobs:
   replicate-to-gitlab:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Author name is ${{ github.event.head_commit.author.name }}"
-      - run: echo "Author email is ${{ github.event.head_commit.author.email }}"
-      - run: echo "Commit message is ${{ github.event.head_commit.message }}"
+      # - run: echo "Author name is ${{ github.event.head_commit.author.name }}"
+      # - run: echo "Author email is ${{ github.event.head_commit.author.email }}"
+      # - run: echo "Commit message is ${{ github.event.head_commit.message }}"
+      - uses: actions/checkout@v3
+        with:
+          repository: https://gitlab.com/EmmanuelDgz/repository-container.git
+          path: all_modules
+      - run: tree all_modules
