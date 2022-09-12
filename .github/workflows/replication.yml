@@ -23,4 +23,4 @@ jobs:
       # Put all files from current repo into repository container
       - run: mkdir -p all_modules/module1
       - run: mv actions1/* all_modules/module1/
-      - run: ls -la all_modules
+      - run: tree all_modules
