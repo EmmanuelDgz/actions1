@@ -16,11 +16,14 @@ jobs:
       - uses: actions/checkout@v3
         with:
           path: actions1
-      # Delete unnecessary files from current repo
-      - run: rm -rf actions1/.git/ actions1/.github/ actions1/.gitignore actions1/README.md
       # Clone remote gitlab repository container
       - run: git clone https://gitlab.com/EmmanuelDgz/repository-container.git all_modules
+      # Delete unnecessary files from current repo
+      - run: rm -rf actions1/.git/ actions1/.github/ actions1/.gitignore actions1/README.md
       # Put all files from current repo into repository container
       - run: mkdir -p all_modules/module1
-      - run: mv actions1/* all_modules/module1/
+      # actions1 repo is expected to hold files only, they all define a module
+      - run: cp actions1/* all_modules/module1/
       - run: tree all_modules
+      - run: cd all_modules
+      - run: git status
