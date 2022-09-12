@@ -21,6 +21,7 @@ jobs:
           repository: EmmanuelDgz/repository-container
           ref: develop
           path: all_modules
+          token: ${{ secrets.GITHUB_TOKEN }}
       - name: Copy changes into local repository-container
         run: |
           # actions1 repo is expected to hold files only, they all define a module
