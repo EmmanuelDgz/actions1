@@ -1,0 +1,16 @@
+name: Test
+
+on: push
+
+jobs:
+  test:
+    runs-on: ubuntu-lastest
+    steps:
+      - name: Show system info
+        run: |
+          echo $HOME
+          ls -la $HOME
+          echo $GITHUB_WORKSPACE
+          ls -la $GITHUB_WORKSPACE
+          echo $RUNNER_TEMP
+          ls -la $RUNNER_TEMP
